@@ -1,6 +1,6 @@
 FROM node:12.16.1-alpine
 
-RUN mkdir -p /srv/auth/ui && chow -R node:node /srv/auth/
+RUN mkdir -p /srv/auth/ui && chown -R node:node /srv/auth/
 
 WORKDIR /srv/auth/ui
 COPY package*.json ./
