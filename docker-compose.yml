@@ -1,0 +1,24 @@
+version: "3.6"
+
+volumes:
+  webroot:
+    name: auth_webroot
+
+networks:
+  auth:
+    external:
+      name: auth
+
+
+services:
+  client:
+    image: client:auth
+  container_name: auth_client
+  restart: unless-stopped
+  build:
+    context: .
+    dockerfile: Dockerfile
+  volumes:
+    - webroot:/srv/auth/ui/build
+  networks:
+    - auth
